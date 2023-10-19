@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7fm78xo6f74a"]
+
+[ext_resource type="Texture2D" uid="uid://ba8ydpcaluneo" path="res://world/assets/GrassBackground.png" id="1_jqyvq"]
+
+[sub_resource type="TileSet" id="TileSet_dc531"]
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -24.0
+offset_top = -23.0
+offset_right = 340.0
+offset_bottom = 197.0
+texture = ExtResource("1_jqyvq")
+stretch_mode = 1
+
+[node name="DirtPath" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_dc531")
+format = 2
