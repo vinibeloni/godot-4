@@ -1,10 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr4itypudqu1q"]
+[gd_scene load_steps=5 format=3 uid="uid://cr4itypudqu1q"]
 
 [ext_resource type="Texture2D" uid="uid://ruhthtrcriyc" path="res://assets/Player/Player.png" id="1_7sho0"]
+[ext_resource type="Script" path="res://player/Player.gd" id="1_vmer0"]
+[ext_resource type="Texture2D" uid="uid://bkoxccp417pe7" path="res://assets/Shadows/MediumShadow.png" id="2_7stob"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i5ooa"]
+radius = 4.0
+height = 10.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_vmer0")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("2_7stob")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
 texture = ExtResource("1_7sho0")
 hframes = 60
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i5ooa")
+debug_color = Color(0.768627, 0.47451, 0.87451, 0.419608)
