@@ -11,7 +11,7 @@ func _ready() -> void:
   _animation_tree.active = true
   _animation_state = _animation_tree["parameters/playback"]
 
-func play(state: String, update_direction = false) -> void:
+func execute(state: String, update_direction = false) -> void:
   _set_animations_position()
   
   if update_direction:
@@ -23,6 +23,7 @@ func play(state: String, update_direction = false) -> void:
 func _set_animations_position() -> void:
   _set_blend_position("idle")
   _set_blend_position("walk")
+  _set_blend_position("roll")
 
 func _set_blend_position(animationName: String) -> void:
   _animation_tree["parameters/%s/blend_position" % animationName] = _looking_position
