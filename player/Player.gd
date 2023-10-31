@@ -32,10 +32,10 @@ func _move():
     _animations.looking_position = _input
     
     _movement.accelerate()
-    _animations.execute("walk", true)
+    _animations.execute("walk")
   else:
     _movement.stop()
-    _animations.execute("idle")
+    _animations.execute("idle", false)
         
   _movement.execute()
 
@@ -49,7 +49,7 @@ func _check_new_state():
 # ROLL
 func _roll():
   _movement.accelerate()
-  _animations.execute("roll", true)
+  _animations.execute("roll")
 
 func roll_animation_finished():
   _movement.stop()
@@ -58,7 +58,7 @@ func roll_animation_finished():
 # ATTACK
 func _attack():
   _movement.stop()
-  _animations.execute("attack", true)
+  _animations.execute("attack")
 
 func attack_animation_finished():
   _state = State.MOVE

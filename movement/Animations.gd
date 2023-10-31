@@ -11,7 +11,7 @@ func _ready() -> void:
   _animation_tree.active = true
   _animation_state = _animation_tree["parameters/playback"]
 
-func execute(state: String, update_direction = false) -> void:
+func execute(state: String, update_direction = true) -> void:
   _set_animations_position()
 
   if update_direction:
