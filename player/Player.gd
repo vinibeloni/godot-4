@@ -5,7 +5,8 @@ extends CharacterBody2D
 
 enum State {
   MOVE,
-  ROLL
+  ROLL,
+  ATTACK
 }
 
 var _state = State.MOVE
@@ -18,6 +19,8 @@ func _physics_process(_delta):
       _move()
     State.ROLL:
       _roll()
+    State.ATTACK:
+      _attack()
 
   _check_new_state()
 
@@ -39,6 +42,9 @@ func _move():
 func _check_new_state():
   if Input.is_action_just_pressed("ui_accept"):
     _state = State.ROLL
+    
+  if Input.is_action_just_pressed("attack"):
+    _state = State.ATTACK
 
 # ROLL
 func _roll():
@@ -47,4 +53,12 @@ func _roll():
 
 func roll_animation_finished():
   _movement.stop()
+  _state = State.MOVE
+
+# ATTACK
+func _attack():
+  _movement.stop()
+  _animations.execute("attack", true)
+
+func attack_animation_finished():
   _state = State.MOVE
