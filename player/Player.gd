@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 const MAX_SPEED = 100
 const ACCELERATION = 10
-const ROLL_ACCELERATION = 500
+const ROLL_ACCELERATION = 100
 const FRICCTION = 10
 
 enum State {
@@ -56,8 +56,9 @@ func _check_new_state() -> void:
 
 # ROLL
 func _roll() -> void:
-  _movement.accelerate(ROLL_ACCELERATION, MAX_SPEED, _delta)
+  velocity = _movement.looking_position * ROLL_ACCELERATION * _delta
   _animations.execute("roll")
+  _movement.execute()
 
 func roll_animation_finished() -> void:
   _movement.deaccelerate(FRICCTION, _delta)
