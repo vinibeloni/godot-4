@@ -588,7 +588,8 @@ parameters/idle/blend_position = Vector2(0, 0)
 parameters/roll/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="Animations" parent="." node_paths=PackedStringArray("_animation_tree") instance=ExtResource("4_mq07g")]
-_animation_tree = NodePath("../AnimationTree")
+[node name="Animations" parent="." node_paths=PackedStringArray("animation_tree") instance=ExtResource("4_mq07g")]
+animation_tree = NodePath("../AnimationTree")
 
-[node name="Movement" parent="." instance=ExtResource("5_qprp4")]
+[node name="Movement" parent="." node_paths=PackedStringArray("body") instance=ExtResource("5_qprp4")]
+body = NodePath("..")

@@ -4,7 +4,7 @@ extends Node2D
 @export var body: CharacterBody2D
 @export var looking_position: Vector2
 
-func execute():
+func move():
   body.move_and_slide()
 
 func accelerate_smooth(acceleration: float, max_speed: float, delta: float) -> void:

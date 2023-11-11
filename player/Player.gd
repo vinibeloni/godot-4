@@ -31,27 +31,26 @@ func _physics_process(delta):
     State.ATTACK:
       _attack()
 
-  _check_new_state()
-
 func _move() -> void:
   _input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-    
+
   if _input != Vector2.ZERO:
     _movement.looking_position = _input
     _animations.looking_position = _input
-    
+
     _movement.accelerate_smooth(ACCELERATION, MAX_SPEED, _delta)
     _animations.execute("walk")
   else:
     _movement.stop_smooth(FRICCTION, _delta)
     _animations.execute("idle", false)
-        
-  _movement.execute()
+
+  _movement.move()
+  _check_new_state()
 
 func _check_new_state() -> void:
   if Input.is_action_just_pressed("ui_accept"):
     _state = State.ROLL
-    
+
   if Input.is_action_just_pressed("attack"):
     _state = State.ATTACK
 
@@ -59,7 +58,7 @@ func _check_new_state() -> void:
 func _roll() -> void:
   _movement.accelerate(ROLL_ACCELERATION)
   _animations.execute("roll")
-  _movement.execute()
+  _movement.move()
 
 func roll_animation_finished() -> void:
   _movement.stop_smooth(FRICCTION, _delta)
