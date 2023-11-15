@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var _animations = $Animations
-@onready var _movement = $Movement
+@onready var _animations: Animations = $Animations
+@onready var _movement: Movement = $Movement
 
 @export_category("Movement")
 @export var MAX_SPEED = 100
@@ -38,11 +38,11 @@ func _move() -> void:
     _movement.looking_position = _input
     _animations.looking_position = _input
 
-    _movement.accelerate_smooth(ACCELERATION, MAX_SPEED, _delta)
-    _animations.execute("walk")
+    _movement.increase_velocity(ACCELERATION, MAX_SPEED, _delta)
+    _animations.play("walk")
   else:
-    _movement.stop_smooth(FRICCTION, _delta)
-    _animations.execute("idle", false)
+    _movement.decrease_velocity(FRICCTION, _delta)
+    _animations.play("idle", false)
 
   _movement.move()
   _check_new_state()
@@ -56,18 +56,18 @@ func _check_new_state() -> void:
 
 # ROLL
 func _roll() -> void:
-  _movement.accelerate(ROLL_ACCELERATION)
-  _animations.execute("roll")
+  _movement.set_velocity(ROLL_ACCELERATION)
+  _animations.play("roll")
   _movement.move()
 
 func roll_animation_finished() -> void:
-  _movement.stop_smooth(FRICCTION, _delta)
+  _movement.decrease_velocity(FRICCTION, _delta)
   _state = State.MOVE
 
 # ATTACK
 func _attack():
   _movement.stop()
-  _animations.execute("attack")
+  _animations.play("attack")
 
 func attack_animation_finished():
   _state = State.MOVE

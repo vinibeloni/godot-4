@@ -1,6 +1,7 @@
 class_name Animations
 extends Node
 
+# export?
 const _animations = ["idle", "walk", "roll", "attack"]
 
 @export var animation_tree: AnimationTree
@@ -12,7 +13,7 @@ func _ready() -> void:
   animation_tree.active = true
   _animation_state = animation_tree["parameters/playback"]
 
-func execute(state: String, update_direction = true) -> void:
+func play(state: String, update_direction = true) -> void:
   _set_animations_position()
 
   _animation_state.travel(state)
