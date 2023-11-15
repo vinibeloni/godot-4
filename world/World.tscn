@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7fm78xo6f74a"]
+[gd_scene load_steps=7 format=3 uid="uid://c7fm78xo6f74a"]
 
 [ext_resource type="Texture2D" uid="uid://ba8ydpcaluneo" path="res://world/assets/GrassBackground.png" id="1_jqyvq"]
 [ext_resource type="Texture2D" uid="uid://b8vp4hjjh10js" path="res://world/assets/DirtTileset.png" id="2_63foc"]
 [ext_resource type="PackedScene" uid="uid://cr4itypudqu1q" path="res://player/Player.tscn" id="3_ux145"]
+[ext_resource type="PackedScene" uid="uid://4gqodrd054f1" path="res://world/grass/Grass.tscn" id="4_8jwhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8p6b"]
 texture = ExtResource("2_63foc")
@@ -357,3 +358,12 @@ tile_set = SubResource("TileSet_o1fhu")
 format = 2
 
 [node name="Player" parent="." instance=ExtResource("3_ux145")]
+
+[node name="Grasses" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Grass" parent="Grasses" instance=ExtResource("4_8jwhh")]
+position = Vector2(125, 8)
+
+[node name="Grass2" parent="Grasses" instance=ExtResource("4_8jwhh")]
+position = Vector2(124, 26)
