@@ -42,7 +42,7 @@ func _move() -> void:
     _animations.play("walk")
   else:
     _movement.decrease_velocity(FRICCTION, _delta)
-    _animations.play("idle", false)
+    _animations.play("idle")
 
   _movement.move()
   _check_new_state()

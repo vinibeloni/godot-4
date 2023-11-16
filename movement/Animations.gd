@@ -13,7 +13,7 @@ func _ready() -> void:
   animation_tree.active = true
   _animation_state = animation_tree["parameters/playback"]
 
-func play(state: String, update_direction = true) -> void:
+func play(state: String) -> void:
   _set_animations_position()
 
   _animation_state.travel(state)

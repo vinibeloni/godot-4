@@ -40,7 +40,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/Overlap/CollisionShape:disabled")
+tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -94,7 +94,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitboxPivot/Overlap/CollisionShape:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -148,7 +148,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitboxPivot/Overlap/CollisionShape:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -202,7 +202,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitboxPivot/Overlap/CollisionShape:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -256,7 +256,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitboxPivot/Overlap/CollisionShape:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -677,6 +677,7 @@ graph_offset = Vector2(-122.03, -70.2475)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sk62h"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_vmer0")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -720,11 +721,13 @@ body = NodePath("..")
 [node name="HitboxPivot" type="Marker2D" parent="."]
 position = Vector2(0, -4)
 
-[node name="Overlap" parent="HitboxPivot" instance=ExtResource("6_3sgah")]
+[node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("6_3sgah")]
 position = Vector2(15, 0)
+collision_layer = 2
+collision_mask = 8
 
-[node name="CollisionShape" parent="HitboxPivot/Overlap" index="0"]
+[node name="CollisionShape" parent="HitboxPivot/SwordHitbox" index="0"]
 shape = SubResource("CapsuleShape2D_sk62h")
 disabled = true
 
-[editable path="HitboxPivot/Overlap"]
+[editable path="HitboxPivot/SwordHitbox"]
